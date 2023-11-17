@@ -1,0 +1,22 @@
+@model KanbanNewDemo.DTOs.Projects.AddProjectViewModel
+@{
+    ViewData["Title"] = "Create New Project";
+}
+<div class="board">
+
+    <form asp-controller="Project" asp-action="Create" method="post" id="todo-form">
+        <div class="form-group">
+            <label>Title :</label>
+            <input type="text" asp-for="Title" style="margin-left: 72px;>
+            <span asp-validation-for="Title"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <label>Description :</label>
+            <textarea rows="3" asp-for="Description"></textarea>
+            <span asp-validation-for="Description"></span>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>

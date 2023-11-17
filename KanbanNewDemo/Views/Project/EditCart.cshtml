@@ -1,0 +1,21 @@
+﻿@model KanbanNewDemo.Models.Project.Cart
+@{
+    ViewData["Title"] = $"Edit '{Model.Name}'";
+}
+<div class="board">
+    <form asp-controller="Project" asp-action="EditCart" method="post" id="todo-form">
+        <input type="hidden" asp-for="ProjectId">
+        <input type="hidden" asp-for="CartId">
+        <input type="hidden" asp-for="StatusNumber">
+        <div class="form-group">
+            <label>Name :</label>
+            <input type="text" asp-for="Name">
+            <span asp-validation-for="Name"></span>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+@section Scripts{
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+}

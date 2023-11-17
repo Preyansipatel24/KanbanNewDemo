@@ -1,0 +1,159 @@
+@model KanbanNewDemo.Models.Project.Project
+@{
+    ViewData["Title"] = @Model.Title;
+    var status = "ToDo";
+}
+@* <div class="board">
+    <div class="app">
+        <div class="kanban">
+            <div class="kanban-container">
+                <div class="kanban-column">
+                    <div class="kanban-column-header">
+
+                            To Do
+                        <a href="/Project/AddCart/@Model.ProjectId"><span>&#43;</span></a>
+                    </div>
+                    <ul class="kanban-column-list" value="ToDo">
+
+                        @foreach (var todo in (IEnumerable<KanbanNewDemo.Models.Project.Cart>)ViewData["TodoCarts"])
+                        {
+                            <partial name="_CartBox" model="todo" />
+                        }
+
+                    </ul>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-column-header">
+                        In Process
+                    </div>
+                    <ul class="kanban-column-list" value="InProcess">
+
+                        @foreach (var inProcess in (IEnumerable<KanbanNewDemo.Models.Project.Cart>)ViewData["InProcessCarts"])
+                        {
+                            <partial name="_CartBox" model="inProcess" />
+                        }
+
+                    </ul>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-column-header">
+                        Done
+                    </div>
+                    <ul class="kanban-column-list" value="Done">
+
+                        @foreach (var done in (IEnumerable<KanbanNewDemo.Models.Project.Cart>)ViewData["DoneCarts"])
+                        {
+                            <partial name="_CartBox" model="done" />
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ *@
+
+<div class="board">
+
+    <div class="lanes">
+        <div class="kanban-column">
+            <div class="kanban-column-header-to-do" value="ToDo" id="headerToDoId">
+                TODO
+                <a href="/Project/AddCart/@Model.ProjectId"><span>&#43;</span></a>
+            </div>
+            <ul class="kanban-column-list" value="ToDo" id="ToDoId">
+
+                @foreach (var todo in (IEnumerable<KanbanNewDemo.Models.Project.Cart>)ViewData["TodoCarts"])
+                {
+                    @* <partial name="_CartBox" model="todo" /> *@
+                    <li class="card" id="Cardid-@todo.CartId">
+
+                        <p class="draggable">
+                            @todo.Name
+                            <div>
+                                <a href="/Project/EditCart/@todo.CartId" class="cart">Edit</a>
+                                <a href="/Project/DeleteCart/@todo.CartId" class="cart">Delete</a>
+                            </div>
+                            <a href="~/Project/GoToNextLevel/@todo.CartId" value="@todo.CartId" id="nextlevelid"></a>
+                            <a href="~/Project/GoToNextLevel/@todo.StatusNumber" id="statusid" value="@todo.StatusNumber"></a>
+                            <a href="~/Project/GoToNextLevel/@todo.ProjectId" id="ProjectId" value="@todo.ProjectId"></a>
+
+
+                        </p>
+                    </li>
+                }
+            </ul>
+
+        </div>
+        <div class="kanban-column">
+            <div class="kanban-column-header-InProcess" id="headerInProcessId">
+                In Process
+            </div>
+            <ul class="kanban-column-list" value="InProcess" id="InProcessId">
+
+                @foreach (var inProcess in (IEnumerable<KanbanNewDemo.Models.Project.Cart>)ViewData["InProcessCarts"])
+                {
+                    @* <partial name="_CartBox" model="inProcess" /> *@
+                    <li class="card" id="Cardid-@inProcess.CartId">
+
+                        <p class="draggable">
+                            @inProcess.Name
+                            <div>
+                                <a href="/Project/EditCart/@inProcess.CartId" class="cart">Edit</a>
+                                <a href="/Project/DeleteCart/@inProcess.CartId" class="cart">Delete</a>
+                            </div>
+                            <a href="~/Project/GoToNextLevel/@inProcess.CartId" value="@inProcess.CartId" id="nextlevelid"></a>
+                            <a href="~/Project/GoToNextLevel/@inProcess.StatusNumber" id="statusid" value="@inProcess.StatusNumber"></a>
+                            <a href="~/Project/GoToNextLevel/@inProcess.ProjectId" id="ProjectId" value="@inProcess.ProjectId"></a>
+
+
+                        </p>
+                    </li>
+                }
+
+            </ul>
+        </div>
+        <div class="kanban-column">
+            <div class="kanban-column-header-Done" id="headerDoneId">
+                Done
+            </div>
+            <ul class="kanban-column-list" value="Done" id="DoneId">
+
+                @foreach (var done in (IEnumerable<KanbanNewDemo.Models.Project.Cart>)ViewData["DoneCarts"])
+                {
+                    <li class="card" id="Cardid-@done.CartId">
+
+                        <p class="draggable">
+                            @done.Name
+                            <div>
+                                <a href="/Project/EditCart/@done.CartId" class="cart">Edit</a>
+                                <a href="/Project/DeleteCart/@done.CartId" class="cart">Delete</a>
+                            </div>
+                            <a href="~/Project/GoToNextLevel/@done.CartId" value="@done.CartId" id="nextlevelid"></a>
+                            <a href="~/Project/GoToNextLevel/@done.StatusNumber" id="statusid" value="@done.StatusNumber"></a>
+                            <a href="~/Project/GoToNextLevel/@done.ProjectId" id="ProjectId" value="@done.ProjectId"></a>
+
+
+                        </p>
+                    </li>
+                }
+
+            </ul>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+@section scripts{
+    @* <script src="~/js/addcart.js"></script> *@
+    <script src="~/js/kanban.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    @* @* <script src="~/js/addcart.js"></script> *@
+    @* <script src="~/js/signalr.js"></script> *@
+
+    @* <script src="~/js/drag.js"></script> *@
+}

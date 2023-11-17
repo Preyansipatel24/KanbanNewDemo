@@ -1,0 +1,16 @@
+@model KanbanNewDemo.DTOs.Projects.ShowProjectsViewModel
+<form id="todo-form">
+    <div class="lanes">
+        <div class="swim-lane" id="todo-lane">
+            <h1 class="heading">@Model.Title</h1>
+            <p lass="task">@Model.Descrioption \ Creator : @Model.Creator</p>
+        </div>
+        <form id="todo-form">
+
+            <a href="/Project/Kanban/@Model.ProjectId">Open TaskBoard </a>
+            <a href="/Project/EditProject/@Model.ProjectId">Edit Project</a>
+            <a href="/Project/DeleteProject/@Model.ProjectId">Delete Project</a>
+        </form>
+
+    </div>
+</form>

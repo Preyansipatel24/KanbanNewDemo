@@ -1,0 +1,23 @@
+@model KanbanNewDemo.Models.Project.Project
+@{
+    ViewData["Title"] = $"Edit '{Model.Title}'";
+}
+<div class="board">
+    <form asp-controller="Project" asp-action="EditProject" method="post" id="todo-form">
+        <input type="hidden" asp-for="ProjectId">
+        <input type="hidden" asp-for="UserId">
+        <div class="form-group">
+            <label>Title :</label>
+            <input type="text" asp-for="Title" style="margin-left: 72px;>
+            <span asp-validation-for="Title"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <label>Description :</label>
+            <textarea rows="4" asp-for="Description"></textarea>
+            <span asp-validation-for="Description"></span>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>

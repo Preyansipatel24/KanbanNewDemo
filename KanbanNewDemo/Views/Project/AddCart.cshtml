@@ -1,0 +1,26 @@
+@model KanbanNewDemo.DTOs.Projects.AddCartViewModel
+@{
+    ViewData["Title"] = "New ToDo";
+}
+<div class="board">
+    <form asp-controller="Project" asp-action="AddCart" method="post" id="todo-form">
+        <input type="hidden" asp-for="ProjectId" value="@ViewBag.ProjectId">
+        <div class="form-group">
+            <label>Name :</label>
+            <input type="text" asp-for="Name" id="userInput">
+            <span asp-validation-for="Name"></span>
+        </div>
+       
+        <br />
+        <button type="submit" class="btn btn-success">Submit</button>
+        @* <div class="row p-1">
+            <div class="col-6">
+                <ul id="messagesList"></ul>
+            </div>
+        </div> *@
+    </form>
+</div>
+@section Scripts{
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/addcart.js"></script>
+}

@@ -1,0 +1,24 @@
+@model KanbanNewDemo.Models.Project.Cart
+<link href="~/css/styles.css" rel="stylesheet" />
+
+
+<li class="card" id="Cardid-@Model.CartId">
+
+    <p class="draggable">
+        @Model.Name
+        <div>
+            <a href="/Project/EditCart/@Model.CartId" class="cart">Edit</a>
+            <a href="/Project/DeleteCart/@Model.CartId" class="cart">Delete</a>
+        </div>
+        <a href="~/Project/GoToNextLevel/@Model.CartId" value="@Model.CartId" id="nextlevelid"></a>
+        <a href="~/Project/GoToNextLevel/@Model.StatusNumber" id="statusid" value="@Model.StatusNumber"></a>
+        <a href="~/Project/GoToNextLevel/@Model.ProjectId" id="ProjectId" value="@Model.ProjectId"></a>
+
+
+    </p>
+</li>
+
+@*
+@section Scripts{
+    <script src="~/js/drag.js"></script>
+} *@
